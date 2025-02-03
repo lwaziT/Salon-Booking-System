@@ -26,6 +26,8 @@ public class User {
 
     private LocalDateTime updatedAt;
 
+    private String password;
+
     public User() {
     }
 
@@ -88,6 +90,14 @@ public class User {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
 }
