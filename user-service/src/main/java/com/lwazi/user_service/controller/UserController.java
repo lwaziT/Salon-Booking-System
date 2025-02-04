@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lwazi.user_service.model.User;
 import com.lwazi.user_service.repository.UserRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UserController {
 
@@ -22,7 +24,7 @@ public class UserController {
     private UserRepository userRepository;
 
     @PostMapping("/user")
-    public User createUser(@RequestBody User user) {
+    public User createUser(@RequestBody @Valid User user) {
 
         return userRepository.save(user);
         
