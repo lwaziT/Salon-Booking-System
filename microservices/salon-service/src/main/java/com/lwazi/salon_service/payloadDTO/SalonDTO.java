@@ -16,6 +16,8 @@ public class SalonDTO {
 
     private String address;
 
+    private String location;
+
     private String contact;
     
     private String email;
