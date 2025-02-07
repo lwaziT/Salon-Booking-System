@@ -30,18 +30,18 @@ public class salonController {
 
         UserDTO user = new UserDTO();
         user.setId(1L);
-        Salon newSalon = salonService.createSalon(salon, user);
+        Salon newSalon = this.salonService.createSalon(salon, user);
         SalonDTO dto = SalonMapper.mapToDTO(newSalon);
         return ResponseEntity.ok(dto);
     }
 
-    @PatchMapping("/user/{id}")
+    @PatchMapping("/salon/{id}")
     public ResponseEntity<SalonDTO> updateSalon(@PathVariable("id") Long salonId,
                                                 @RequestBody SalonDTO salon) throws Exception {
 
         UserDTO user = new UserDTO();
         user.setId(1L);
-        Salon newSalon = salonService.updateSalon(salon, user, salonId);
+        Salon newSalon = this.salonService.updateSalon(salon, user, salonId);
         SalonDTO dto = SalonMapper.mapToDTO(newSalon);
         return ResponseEntity.ok(dto);
     }
@@ -49,7 +49,7 @@ public class salonController {
     @GetMapping("/salon")
     public ResponseEntity<List<SalonDTO>> getAllSalons() throws Exception {
 
-        List<Salon> salonLists = salonService.getAllSalons();
+        List<Salon> salonLists = this.salonService.getAllSalons();
         List<SalonDTO> dto = salonLists.stream().map((salonList) -> {
             SalonDTO salonDTO = SalonMapper.mapToDTO(salonList);
             return salonDTO;
@@ -58,18 +58,18 @@ public class salonController {
         return ResponseEntity.ok(dto);
     }
 
-    @GetMapping("/salon/{id}")
+    @GetMapping("/salon/{salonId}")
     public ResponseEntity<SalonDTO> getSalonById(@PathVariable Long salonId) throws Exception {
 
-        Salon newSalon = salonService.getSalonById(salonId);
+        Salon newSalon = this.salonService.getSalonById(salonId);
         SalonDTO dto = SalonMapper.mapToDTO(newSalon);
         return ResponseEntity.ok(dto);
     }
 
-    @GetMapping("/search")
+    @GetMapping("salon/search")
     public ResponseEntity<List<SalonDTO>> searchSalons(@RequestParam("city") String city) throws Exception {
 
-        List<Salon> salonLists = salonService.getSalonsByCity(city);
+        List<Salon> salonLists = this.salonService.getSalonsByCity(city);
 
         List<SalonDTO> dto = salonLists.stream().map((salonList) -> {
             SalonDTO salonDTO = SalonMapper.mapToDTO(salonList);
@@ -84,7 +84,7 @@ public class salonController {
 
         UserDTO user = new UserDTO();
         user.setId(1L);
-        Salon salon = salonService.getSalonByOwnerId(id);
+        Salon salon = this.salonService.getSalonByOwnerId(id);
         SalonDTO dto = SalonMapper.mapToDTO(salon);
         
         return ResponseEntity.ok(dto);

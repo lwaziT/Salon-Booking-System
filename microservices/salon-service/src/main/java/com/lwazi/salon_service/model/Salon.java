@@ -29,9 +29,6 @@ public class Salon {
     private String address;
 
     @Column(nullable = false)
-    private String location;
-
-    @Column(nullable = false)
     private String contact;
 
     @Column(nullable = false)
@@ -40,7 +37,7 @@ public class Salon {
     @Column(nullable = false)
     private String city;
 
-    @Column(nullable = false)
+    @Column( nullable = false)
     private Long ownerId;
 
     @Column(nullable = false)
