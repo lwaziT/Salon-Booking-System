@@ -29,7 +29,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Set<Category> getAllCategoriesBySalon(Long id) {
+    public Set<Category> getCategoriesBySalon(Long id) {
         
         return this.categoryRepository.findBySalonId(id);
     }

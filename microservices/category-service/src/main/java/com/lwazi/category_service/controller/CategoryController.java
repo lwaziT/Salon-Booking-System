@@ -21,9 +21,9 @@ public class CategoryController {
     private final CategoryService categoryService;
     
     @GetMapping("/salon/{id}")
-    public ResponseEntity<Set<Category>> getAllCategoriesBySalon(
+    public ResponseEntity<Set<Category>> getCategoriesBySalon(
         @PathVariable Long id) {
-            Set<Category> categories = this.categoryService.getAllCategoriesBySalon(id);
+            Set<Category> categories = this.categoryService.getCategoriesBySalon(id);
             return ResponseEntity.ok(categories);
     } 
 

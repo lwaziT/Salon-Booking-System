@@ -10,7 +10,7 @@ import com.lwazi.category_service.model.Category;
 public interface CategoryService {
     
     Category createCategory(Category category, SalonDTO salonDTO);
-    Set<Category> getAllCategoriesBySalon(Long id);
+    Set<Category> getCategoriesBySalon(Long id);
     Category getCategoryById(Long id) throws Exception;
     void deleteCategory(Long id, Long salonId) throws Exception;
 }
