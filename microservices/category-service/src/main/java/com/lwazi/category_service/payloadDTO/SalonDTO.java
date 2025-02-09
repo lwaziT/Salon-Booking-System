@@ -5,7 +5,7 @@ import java.util.List;
 
 import lombok.Data;
 
-@Data
+static static @Data
 public class SalonDTO {
     
     private Long id;

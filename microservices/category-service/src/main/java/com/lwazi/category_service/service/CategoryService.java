@@ -1,14 +1,16 @@
 package com.lwazi.category_service.service;
 
 import java.util.Set;
-import java.util.Locale.Category;
 
 import com.lwazi.category_service.payloadDTO.SalonDTO;
 
+import com.lwazi.category_service.model.Category;
+
+
 public interface CategoryService {
     
-    Category postCategory(Category category, SalonDTO salonDTO);
-    Set<Category> getAllCategoriesBySalon();
-    Category getCategoryById(Long id);
-    void deleteCategoryById(Long id);
+    Category createCategory(Category category, SalonDTO salonDTO);
+    Set<Category> getAllCategoriesBySalon(Long id);
+    Category getCategoryById(Long id) throws Exception;
+    void deleteCategory(Long id, Long salonId) throws Exception;
 }
