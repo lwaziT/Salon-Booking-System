@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "BookingServiceApplication",
+            "request": "launch",
+            "mainClass": "com.lwazi.booking_service.BookingServiceApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ServiceOfferingServiceApplication<service-offering-service>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
