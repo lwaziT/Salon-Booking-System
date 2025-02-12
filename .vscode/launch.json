@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ServiceOfferingServiceApplication<service-offering-service>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.lwazi.service_offering_service.ServiceOfferingServiceApplication",
+            "projectName": "service-offering-service",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -3,6 +3,7 @@ package com.lwazi.service_offering_service.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +39,7 @@ public class SalonServiceOfferingController {
         return ResponseEntity.ok(service);
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<ServiceOffering> updateService(
         @PathVariable Long id, @RequestBody ServiceOffering serviceOffering
         ) throws Exception {
