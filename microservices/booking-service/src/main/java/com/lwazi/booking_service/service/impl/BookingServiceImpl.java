@@ -27,7 +27,8 @@ public class BookingServiceImpl implements BookingService{
     private final BookingRepository bookingRepository;
 
     @Override
-    public Booking createBooking(BookingRequest booking, UserDTO user, SalonDTO salon, Set<ServiceDTO> services) throws Exception {
+    public Booking createBooking(BookingRequest booking, UserDTO user, SalonDTO salon, 
+    Set<ServiceDTO> services) throws Exception {
        
         int totalDuration = services.stream().mapToInt(ServiceDTO::getDuration).sum();
 
@@ -43,8 +44,10 @@ public class BookingServiceImpl implements BookingService{
         Booking newBooking = new Booking();
         newBooking.setCustomerId(user.getId());
         newBooking.setSalonId(salon.getId());
-        newBooking.setStartTime(startTime);
-        newBooking.setEndTime(endTime);
+        //if (isSlotAvailable) {
+            newBooking.setStartTime(startTime);
+            newBooking.setEndTime(endTime);
+        //}
         newBooking.setServiceIds(serviceIds);
         newBooking.setTotalPrice(totalPrice);
         newBooking.setStatus(BookingStatus.PENDING);
@@ -52,13 +55,17 @@ public class BookingServiceImpl implements BookingService{
         return this.bookingRepository.save(newBooking);
     }
 
-    public Boolean isTimeSlotAvailable(SalonDTO salon, LocalDateTime startTime, LocalDateTime endTime) throws Exception {
+    @SuppressWarnings("unused")
+    private Boolean isTimeSlotAvailable(SalonDTO salon, LocalDateTime startTime, LocalDateTime endTime) throws Exception {
 
         List<Booking> existingBookings = this.getBookingsBySalonId(salon.getId());
 
-        if (startTime.isBefore(salon.getOpeningTime().atDate(startTime.toLocalDate())) || 
-        endTime.isAfter(salon.getClosingTime().atDate(endTime.toLocalDate()))) {
-            throw new Exception("Booking time is outside salon operating hours");
+        LocalDateTime salonOpenTime = salon.getOpeningTime().atDate(startTime.toLocalDate());
+        LocalDateTime salonCloseTime = salon.getClosingTime().atDate(endTime.toLocalDate());
+
+        if (startTime.isBefore(salonOpenTime) || 
+        endTime.isAfter(salonCloseTime)) {
+            throw new Exception("Booking time is outside of salon operating hours");
         }
 
         for (Booking booking : existingBookings) {

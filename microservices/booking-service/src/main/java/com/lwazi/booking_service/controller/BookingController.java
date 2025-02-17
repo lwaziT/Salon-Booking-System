@@ -19,6 +19,7 @@ import com.lwazi.mapper.BookingMapper;
 import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -48,18 +49,21 @@ public class BookingController {
 
         SalonDTO salon = new SalonDTO();
         salon.setId(salonId);
+        salon.setOpeningTime(LocalTime.now());
+        salon.setClosingTime(LocalTime.now().plusHours(12));
 
         Set<ServiceDTO> services = new HashSet<>();
 
         ServiceDTO service = new ServiceDTO();
         service.setId(1L);
-        service.setDuration(30);
-        service.setPrice(100.00);
+        service.setDuration(60);
+        service.setPrice(350.00);
         service.setName("Haircut");
 
         services.add(service);
 
-        Booking booking = this.bookingService.createBooking(bookingRequest, user, salon, services);
+        Booking booking = this.bookingService.createBooking(bookingRequest, 
+        user, salon, services);
         
         return ResponseEntity.ok(booking);
     }
