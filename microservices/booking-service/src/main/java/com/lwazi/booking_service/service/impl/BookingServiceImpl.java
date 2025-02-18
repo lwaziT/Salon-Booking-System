@@ -35,7 +35,7 @@ public class BookingServiceImpl implements BookingService{
         LocalDateTime startTime = booking.getStartTime();
         LocalDateTime endTime = startTime.plusMinutes(totalDuration);
 
-        //Boolean isSlotAvailable = this.isTimeSlotAvailable(salon, startTime, endTime);
+        this.isTimeSlotAvailable(salon, startTime, endTime);
 
         Double totalPrice = services.stream().mapToDouble(ServiceDTO::getPrice).sum();
 
@@ -44,10 +44,8 @@ public class BookingServiceImpl implements BookingService{
         Booking newBooking = new Booking();
         newBooking.setCustomerId(user.getId());
         newBooking.setSalonId(salon.getId());
-        //if (isSlotAvailable) {
-            newBooking.setStartTime(startTime);
-            newBooking.setEndTime(endTime);
-        //}
+        newBooking.setStartTime(startTime);
+        newBooking.setEndTime(endTime);
         newBooking.setServiceIds(serviceIds);
         newBooking.setTotalPrice(totalPrice);
         newBooking.setStatus(BookingStatus.PENDING);
@@ -55,7 +53,6 @@ public class BookingServiceImpl implements BookingService{
         return this.bookingRepository.save(newBooking);
     }
 
-    @SuppressWarnings("unused")
     private Boolean isTimeSlotAvailable(SalonDTO salon, LocalDateTime startTime, LocalDateTime endTime) throws Exception {
 
         List<Booking> existingBookings = this.getBookingsBySalonId(salon.getId());

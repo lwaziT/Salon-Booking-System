@@ -49,8 +49,8 @@ public class BookingController {
 
         SalonDTO salon = new SalonDTO();
         salon.setId(salonId);
-        salon.setOpeningTime(LocalTime.now());
-        salon.setClosingTime(LocalTime.now().plusHours(12));
+        salon.setOpeningTime(LocalTime.of(9, 0, 0));
+        salon.setClosingTime(LocalTime.of(18, 0, 0));
 
         Set<ServiceDTO> services = new HashSet<>();
 
