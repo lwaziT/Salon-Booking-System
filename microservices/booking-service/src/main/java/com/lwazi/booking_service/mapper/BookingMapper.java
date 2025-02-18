@@ -1,4 +1,4 @@
-package com.lwazi.mapper;
+package com.lwazi.booking_service.mapper;
 
 import com.lwazi.booking_service.model.Booking;
 import com.lwazi.booking_service.payloadDTO.BookingDTO;

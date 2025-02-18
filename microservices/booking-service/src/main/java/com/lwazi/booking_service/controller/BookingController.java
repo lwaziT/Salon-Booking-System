@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lwazi.booking_service.domain.BookingStatus;
+import com.lwazi.booking_service.mapper.BookingMapper;
 import com.lwazi.booking_service.model.Booking;
 import com.lwazi.booking_service.model.SalonReport;
 import com.lwazi.booking_service.payloadDTO.BookingDTO;
@@ -14,7 +15,6 @@ import com.lwazi.booking_service.payloadDTO.SalonDTO;
 import com.lwazi.booking_service.payloadDTO.ServiceDTO;
 import com.lwazi.booking_service.payloadDTO.UserDTO;
 import com.lwazi.booking_service.service.BookingService;
-import com.lwazi.mapper.BookingMapper;
 
 import lombok.RequiredArgsConstructor;
 
